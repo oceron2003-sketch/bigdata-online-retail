@@ -37,20 +37,59 @@ https://archive.ics.uci.edu/dataset/352/online+retail
 Coloca el archivo convertido a CSV en la carpeta `datos` con
 el nombre `online_retail.csv`.
 
-## 5. Ejecución
 
-1. Instalar Python y Apache Spark.
-2. Preparar el archivo `online_retail.csv` en la carpeta `datos`.
-3. Ejecutar el procesamiento por lotes:
+## 5. Instrucciones de ejecución
 
-   `spark-submit limpieza_ventas.py`
+### Requisitos previos
 
-4. Ejecutar la generación de gráficas:
+- Python 3.
+- Apache Spark 3.5.8.
+- Java compatible con la instalación de Spark.
+- El archivo `online_retail.csv`, obtenido a partir del conjunto de datos Online Retail de UCI.
 
-   `python3 visualizar_resultados.py`
+### Preparación de los datos
 
-Los scripts deben tener configuradas las rutas correspondientes
-a las carpetas de datos y resultados.
+Crear la siguiente estructura en el entorno Linux:
+
+```text
+/home/vboxuser/tarea3_bigdata/
+├── datos/
+│   └── online_retail.csv
+├── codigo/
+│   ├── limpieza_ventas.py
+│   └── visualizar_resultados.py
+└── resultados/
+```
+
+El archivo CSV debe contener los encabezados originales del conjunto de datos.
+
+### Ejecutar el procesamiento por lotes
+
+Desde la carpeta del código, ejecutar:
+
+```bash
+cd ~/tarea3_bigdata/codigo
+spark-submit limpieza_ventas.py
+```
+
+El programa limpia los datos, calcula indicadores de ventas y guarda los resultados en la carpeta `resultados`.
+
+### Generar las gráficas
+
+Ejecutar:
+
+```bash
+python3 visualizar_resultados.py
+```
+
+Este script genera las visualizaciones de los resultados procesados. Deben existir las dependencias de Python y las rutas configuradas en el script.
+
+### Resultados esperados
+
+- Ventas limpias.
+- Ingresos por país.
+- Ingresos por mes.
+- Gráficas del análisis.
 
 ## 6. Resultados esperados
 
