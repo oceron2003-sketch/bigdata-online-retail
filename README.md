@@ -38,43 +38,51 @@ Coloca el archivo convertido a CSV en la carpeta `datos` con
 el nombre `online_retail.csv`.
 
 
-## 5. Instrucciones de ejecución
 
-### Requisitos previos
+## 5. Requisitos e instalación
 
 - Python 3.
 - Apache Spark 3.5.8.
 - Java compatible con la instalación de Spark.
-- El archivo `online_retail.csv`, obtenido a partir del conjunto de datos Online Retail de UCI.
+- pandas.
+- Matplotlib.
 
-### Preparación de los datos
+Instalar las librerías de visualización:
 
-Crear la siguiente estructura en el entorno Linux:
-
-```text
-/home/vboxuser/tarea3_bigdata/
-├── datos/
-│   └── online_retail.csv
-├── codigo/
-│   ├── limpieza_ventas.py
-│   └── visualizar_resultados.py
-└── resultados/
+```bash
+python3 -m pip install pandas matplotlib
 ```
 
-El archivo CSV debe contener los encabezados originales del conjunto de datos.
+## 6. Preparación de los datos
 
-### Ejecutar el procesamiento por lotes
+Descargar el conjunto de datos Online Retail de UCI:
 
-Desde la carpeta del código, ejecutar:
+https://archive.ics.uci.edu/dataset/352/online+retail
+
+Convertir el archivo Excel a CSV y guardarlo como:
+
+`/home/vboxuser/tarea3_bigdata/datos/online_retail.csv`
+
+La conversión debe conservar los encabezados originales.
+
+## 7. Ejecución del procesamiento por lotes
+
+Desde la terminal de Linux:
 
 ```bash
 cd ~/tarea3_bigdata/codigo
 spark-submit limpieza_ventas.py
 ```
 
-El programa limpia los datos, calcula indicadores de ventas y guarda los resultados en la carpeta `resultados`.
+El programa limpia y transforma los registros, calcula los productos más vendidos y agrupa los ingresos por país y por mes.
 
-### Generar las gráficas
+Los resultados se guardan en:
+
+- `resultados/ventas_limpias`
+- `resultados/ingresos_por_pais`
+- `resultados/ingresos_por_mes`
+
+## 8. Generación de visualizaciones
 
 Ejecutar:
 
@@ -82,28 +90,21 @@ Ejecutar:
 python3 visualizar_resultados.py
 ```
 
-Este script genera las visualizaciones de los resultados procesados. Deben existir las dependencias de Python y las rutas configuradas en el script.
+El programa genera tres gráficas PNG:
 
-### Resultados esperados
+- `ingresos_por_mes.png`
+- `ingresos_por_pais.png`
+- `productos_mas_vendidos.png`
 
-- Ventas limpias.
-- Ingresos por país.
-- Ingresos por mes.
-- Gráficas del análisis.
+Las imágenes se guardan en:
 
-## 6. Resultados esperados
+`/home/vboxuser/tarea3_bigdata/resultados/graficos`
 
-- Datos de ventas limpios.
-- Ingresos agrupados por país.
-- Ingresos agrupados por mes.
-- Gráficas de los resultados del análisis.
+## 9. Orden de ejecución
 
-## 7. Autor
+Primero ejecutar `limpieza_ventas.py` para crear los resultados CSV. Después ejecutar `visualizar_resultados.py` para generar las gráficas.
 
-Estudiante de Ingeniería de Sistemas - UNAD.
+## 10. Autoría
 
-## 8. Nota
-
-Este repositorio documenta el código fuente del procesamiento.
-Los archivos de datos y los resultados generados pueden mantenerse
-fuera del repositorio.
+Proyecto académico de procesamiento de datos con Apache Spark.
+UNAD - Ingeniería de Sistemas.
